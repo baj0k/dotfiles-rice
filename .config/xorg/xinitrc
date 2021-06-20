@@ -12,11 +12,11 @@ firefox &
 blueman-applet &
 ssh proxy -N &
 signal-desktop --start-in-tray &
-caprine --minimize &
+caprine &
 spotifyd --config-path .config/spotifyd/spotifyd.conf &
 discord --start-minimized &
 crond -f "$XDG_CONFIG_HOME/crontab" &
 mpd &
-redshift -P -O 4200 &
+redshift -P -O 2700 &
 
 exec i3 

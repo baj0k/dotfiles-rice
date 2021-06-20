@@ -4,29 +4,20 @@ set $mod Mod4
 # reload config
 bindsym $mod+Shift+r exec "i3-msg restart"
 
-# Set wallpaper after startup
-exec_always --no-startup-id "${XDG_BIN_HOME}/setbg"
-
-# Screenshot utility, fallback to different keysym on specific keyboards
-bindsym Print exec --no-startup-id "${XDG_BIN_HOME}/prtsc"
-bindsym Menu exec --no-startup-id "${XDG_BIN_HOME}/prtsc"
+# Screenshot utility
+bindsym Print exec --no-startup-id "scrot /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
 bindsym Shift+Print --release exec --no-startup-id "scrot -s /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
-bindsym Shift+Menu --release exec --no-startup-id "scrot -s /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
 
 # brightness
 bindsym XF86MonBrightnessUp exec pkill -RTMIN+13 i3blocks
 bindsym XF86MonBrightnessDown exec pkill -RTMIN+13 i3blocks
 
-# Pulseaudio media key bindings
+# Pulseaudio volume bindings
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && pkill -RTMIN+12 i3blocks
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && pkill -RTMIN+12 i3blocks
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+12 i3blocks
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && pkill -RTMIN+12 i3blocks
-bindcode 171 exec --no-startup-id mpc next && pkill -RTMIN+11 i3blocks 
-bindcode 172 exec --no-startup-id mpc toggle && pkill -RTMIN+11 i3blocks
-bindcode 173 exec --no-startup-id mpc prev && pkill -RTMIN+11 i3blocks
-bindcode 174 exec --no-startup-id mpc stop && pkill -RTMIN+11 i3blocks
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && pkill -RTMIN+11 i3blocks
 
 # Floating windows for specific applications
 for_window [class="mpv"] floating enable

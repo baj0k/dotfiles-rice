@@ -7,13 +7,12 @@ interval=1800
 
 [media]
 label=🎵 
-signal=11
+signal=10
 interval=10
 
-[ip]
+[wifi]
 label=📡 
-signal=10
-interval=once
+interval=20
 
 [openvpn]
 label=🌏 
@@ -39,6 +38,10 @@ label=🔉
 signal=12
 interval=once
 separator_block_width=5
+
+[battery]
+label=🔋
+interval=30
 
 [calendar]
 label=
